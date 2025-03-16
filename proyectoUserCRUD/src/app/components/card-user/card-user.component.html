@@ -1,1 +1,11 @@
-<p>card-user works!</p>
+<div class="card" style="width: 18rem">
+  <img [src]="myUser.image" class="card-img-top" [alt]="myUser.first_name" />
+  <div class="card-body">
+    <h5 class="card-title">{{ myUser.first_name }} {{ myUser.last_name }}</h5>
+    <a href="#" class="btn btn-primary" [routerLink]="['/user', myUser._id]"
+      >Ver</a
+    >
+    <a href="#" class="btn btn-primary">Actualizar</a>
+    <a href="#" class="btn btn-primary">Borrar</a>
+  </div>
+</div>
