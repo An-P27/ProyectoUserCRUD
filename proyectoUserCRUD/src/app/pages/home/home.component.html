@@ -1,9 +1,33 @@
-<section>
-  <div class="row">
+<section class="mx-4 pt-4">
+  <div class="d-flex justify-content-between py-2">
+    <button
+      class="btn-link-custom"
+      (click)="gotoPrev()"
+      [disabled]="currentPage === 1"
+    >
+      Página anterior
+    </button>
+    <button class="btn-link-custom" (click)="gotoNext()">
+      Siguiente página
+    </button>
+  </div>
+  <div class="row g-4 justify-content-center">
     @for(user of arrUsers; track user._id){
     <article class="col-12 col-md-6 col-lg-3">
       <app-card-user [myUser]="user"></app-card-user>
     </article>
     }
+  </div>
+  <div class="d-flex justify-content-between py-5">
+    <button
+      class="btn-link-custom"
+      (click)="gotoPrev()"
+      [disabled]="currentPage === 1"
+    >
+      Página anterior
+    </button>
+    <button class="btn-link-custom" (click)="gotoNext()">
+      Siguiente página
+    </button>
   </div>
 </section>

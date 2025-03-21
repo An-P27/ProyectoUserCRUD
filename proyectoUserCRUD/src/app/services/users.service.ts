@@ -11,8 +11,8 @@ export class UsersService {
   private httpClient = inject(HttpClient);
   private baseUrl: string = ' https://peticiones.online/api/users';
 
-  getAll(): Observable<IResponse> {
-    return this.httpClient.get<IResponse>(this.baseUrl);
+  getAll(page: number = 1): Observable<IResponse> {
+    return this.httpClient.get<IResponse>(`${this.baseUrl}?page=${page}`);
   }
 
   getById(id: string): Promise<IUser> {

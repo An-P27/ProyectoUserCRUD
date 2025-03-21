@@ -1,0 +1,10 @@
+.btn-link-custom {
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: #7952b3;
+  background: none;
+  border: none;
+  &:hover {
+    color: #141727;
+  }
+}
