@@ -1,3 +1,19 @@
-<section class="container min-vh-100 py-5">
-  <h1 class="mt-5 mb-4 fw-semibold">{{ myUser.first_name }}</h1>
+<section class="container mt-5 min-vh-100 py-5">
+  <div class="row">
+    <figure class="col-12 col-md-6">
+      <img
+        class="img-fluid rounded-circle"
+        [src]="myUser.image"
+        [alt]="myUser.username"
+      />
+    </figure>
+    <div class="border-start border-dark-subtle col-12 col-md-6 px-5">
+      <h2 class="fw-semibold mb-1">{{ myUser.first_name }}</h2>
+      <h4 class="text-body-secondary mb-5">{{ myUser.last_name }}</h4>
+      <h6 class="fw-semibold">Nombre de usuario:</h6>
+      <p class="mb-4">{{ myUser.username }}</p>
+      <h6 class="fw-semibold">Email:</h6>
+      <p class="mb-4">{{ myUser.email }}</p>
+    </div>
+  </div>
 </section>
