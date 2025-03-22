@@ -1,10 +1,14 @@
 .nav-link {
   color: black;
 }
-.active .nav-link {
+.active {
   font-weight: 600;
 }
 .navbar-border {
   background-color: white;
   border-bottom: 2px solid #7952b3;
+}
+
+.logo {
+  font-weight: 600;
 }
