@@ -1,5 +1,5 @@
-<section>
-  <h2>Formulario</h2>
+<section class="container min-vh-100 py-5">
+  <h5 class="mt-5 mb-4 fw-semibold">Completa el siguiente formulario:</h5>
   <form [formGroup]="userForm" (ngSubmit)="getDataForm()">
     <div class="mb-3">
       <label class="form-label" for="first_name">Nombre</label>
@@ -38,7 +38,7 @@
       />
     </div>
     <input
-      class="btn btn-danger"
+      class="btn btn-secondary"
       type="submit"
       value="Enviar"
       [disabled]="userForm.invalid"

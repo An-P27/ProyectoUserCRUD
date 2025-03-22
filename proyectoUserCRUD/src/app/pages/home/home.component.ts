@@ -14,20 +14,12 @@ export class HomeComponent {
   userService = inject(UsersService);
   arrUsers: IUser[] = [];
   currentPage: number = 1;
-  totalPages: number = 1; // Se actualizará al obtener datos de la API
-  perPage: number = 10; // Cantidad de usuarios por página
+  totalPages: number = 1;
+  perPage: number = 10;
 
   constructor(private usersService: UsersService) {}
 
   async ngOnInit() {
-    // this.userService.getAll().subscribe({
-    //   next: (data) => {
-    //     this.arrUsers = data.results;
-    //   },
-    //   error: (error) => {
-    //     console.log(error);
-    //   },
-    // });
     this.loadUsers();
   }
 
@@ -49,8 +41,8 @@ export class HomeComponent {
     this.usersService
       .getAll(this.currentPage)
       .subscribe((response: IResponse) => {
-        this.arrUsers = response.results; // Los datos de los usuarios
-        this.totalPages = response.total_pages; // Total de páginas de la API
+        this.arrUsers = response.results;
+        this.totalPages = response.total_pages;
       });
   }
   catch(error: any) {

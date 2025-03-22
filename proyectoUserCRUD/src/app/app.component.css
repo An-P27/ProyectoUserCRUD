@@ -1,7 +1,10 @@
 main {
   font-family: "Nunito Sans", sans-serif;
-  background-color: #fcf9ff;
 }
 header {
   font-family: "Nunito Sans", sans-serif;
+}
+
+.my-gradient {
+  background: linear-gradient(to right, #fcf9ff, #faf4ff, #fcf9ff);
 }
