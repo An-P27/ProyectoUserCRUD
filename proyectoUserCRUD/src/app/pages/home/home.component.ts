@@ -19,7 +19,7 @@ export class HomeComponent {
 
   constructor(private usersService: UsersService) {}
 
-  async ngOnInit() {
+  ngOnInit() {
     this.loadUsers();
   }
 
@@ -37,15 +37,22 @@ export class HomeComponent {
     }
   }
 
-  async loadUsers() {
-    this.usersService
-      .getAll(this.currentPage)
-      .subscribe((response: IResponse) => {
-        this.arrUsers = response.results;
-        this.totalPages = response.total_pages;
-      });
+  loadUsers() {
+    try {
+      this.usersService
+        .getAll(this.currentPage)
+        .subscribe((response: IResponse) => {
+          this.arrUsers = response.results;
+          this.totalPages = response.total_pages;
+        });
+    } catch (error: any) {
+      console.log(error);
+    }
   }
-  catch(error: any) {
-    console.log(error);
+
+  deleteUser(event: Boolean) {
+    if (event) {
+      this.loadUsers();
+    }
   }
 }

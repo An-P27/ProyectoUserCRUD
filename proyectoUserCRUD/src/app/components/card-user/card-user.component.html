@@ -13,15 +13,9 @@
         {{ myUser.last_name }}
       </h6>
     </div>
-    <div class="mt-auto d-grid gap-2">
-      <a
-        href="#"
-        class="btn btn-bd-primary"
-        [routerLink]="['/user', myUser._id]"
-        >Ver</a
-      >
-      <a href="#" class="btn btn-bd-outline">Actualizar</a>
-      <a href="#" class="btn btn-bd-outline">Borrar</a>
-    </div>
+    <app-buttons
+      [myUser]="myUser"
+      (deleteItemEmit)="deleteUser($event)"
+    ></app-buttons>
   </div>
 </div>

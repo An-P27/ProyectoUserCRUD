@@ -1,13 +1,18 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IUser } from '../../interfaces/iuser.interface';
-import { RouterLink } from '@angular/router';
+import { ButtonsComponent } from '../../shared/buttons/buttons.component';
 
 @Component({
   selector: 'app-card-user',
-  imports: [RouterLink],
+  imports: [ButtonsComponent],
   templateUrl: './card-user.component.html',
   styleUrl: './card-user.component.css',
 })
 export class CardUserComponent {
   @Input() myUser!: IUser;
+  @Output() deleteItemEmit: EventEmitter<Boolean> = new EventEmitter();
+
+  deleteUser(event: Boolean) {
+    this.deleteItemEmit.emit(event);
+  }
 }
