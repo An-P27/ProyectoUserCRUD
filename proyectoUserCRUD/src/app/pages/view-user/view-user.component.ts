@@ -1,24 +1,35 @@
 import { Component, inject, Input } from '@angular/core';
 import { UsersService } from '../../services/users.service';
 import { IUser } from '../../interfaces/iuser.interface';
+import { ButtonsComponent } from '../../shared/buttons/buttons.component';
+import { toast } from 'ngx-sonner';
 
 @Component({
   selector: 'app-view-user',
-  imports: [],
+  imports: [ButtonsComponent],
   templateUrl: './view-user.component.html',
   styleUrl: './view-user.component.css',
 })
 export class ViewUserComponent {
   @Input() idUser: string = '';
   userService = inject(UsersService);
-  myUser!: IUser;
+  myUser: IUser = {
+    _id: '',
+    id: 0,
+    first_name: '',
+    last_name: '',
+    username: '',
+    email: '',
+    image: '',
+    password: '',
+  };
 
   async ngOnInit() {
     let id = this.idUser;
     try {
       this.myUser = await this.userService.getById(id);
-    } catch (error) {
-      console.log(error);
+    } catch (msg: any) {
+      toast.error(msg.error);
     }
   }
 }

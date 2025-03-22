@@ -1,4 +1,6 @@
-<section class="bg-white mt-5 min-vh-100 py-5 d-flex justify-content-center">
+<section
+  class="bg-white min-vh-100 d-flex justify-content-center align-items-center"
+>
   <div class="row">
     <figure class="px-5 col-12 col-md-6">
       <img
@@ -14,6 +16,7 @@
       <p class="mb-4">{{ myUser.username }}</p>
       <h6 class="fw-semibold">Email:</h6>
       <p class="mb-4">{{ myUser.email }}</p>
+      <div><app-buttons [myUser]="myUser" [volver]="true"></app-buttons></div>
     </div>
   </div>
 </section>

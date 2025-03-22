@@ -1,5 +1,10 @@
-<div class="mt-auto d-grid gap-2">
+<div class="btn-group mb-3">
+  @if(volver){
+  <a class="btn btn-bd-primary" [routerLink]="['/home']">Volver</a>
+  }@else {
   <a class="btn btn-bd-primary" [routerLink]="['/user', myUser._id]">Ver</a>
+  }
+
   <a class="btn btn-bd-outline">Actualizar</a>
   <a class="btn btn-bd-outline" (click)="deleteUser(myUser._id)">Borrar</a>
 </div>

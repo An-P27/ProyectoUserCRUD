@@ -6,5 +6,5 @@ header {
 }
 
 .my-gradient {
-  background: linear-gradient(to right, #fcf9ff, #faf4ff, #fcf9ff);
+  background: radial-gradient(at bottom right, #fcf2fe, #fffaff);
 }
