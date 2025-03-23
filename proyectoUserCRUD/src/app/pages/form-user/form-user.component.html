@@ -11,7 +11,13 @@
         formControlName="first_name"
         placeholder="Introduce nombre"
       />
+      @if(checkControl('first_name', 'required')){
+      <p class="error">Campo obligatorio</p>
+      } @if(checkControl('first_name', 'minlength')){
+      <p class="error">El campo debe tener al menos 3 caracteres</p>
+      }
     </div>
+
     <div class="mb-3">
       <label class="form-label" for="last_name">Apellidos</label>
       <input
@@ -21,7 +27,13 @@
         formControlName="last_name"
         placeholder="Introduce apellidos"
       />
+      @if(checkControl('last_name', 'required')){
+      <p class="error">Campo obligatorio</p>
+      } @if(checkControl('last_name', 'minlength')){
+      <p class="error">El campo debe tener al menos 3 caracteres</p>
+      }
     </div>
+
     <div class="mb-3">
       <label class="form-label" for="email">Email</label>
       <input
@@ -31,7 +43,13 @@
         formControlName="email"
         placeholder="Introduce email"
       />
+      @if(checkControl('email', 'required')){
+      <p class="error">Email obligatorio</p>
+      }@if(checkControl('email', 'pattern')){
+      <p class="error">El email debe ser válido</p>
+      }
     </div>
+
     <div class="mb-3">
       <label class="form-label" for="image">Imagen de perfil</label>
       <input
@@ -41,7 +59,13 @@
         formControlName="image"
         placeholder="Introduce una URL válida"
       />
+      @if(checkControl('image', 'required')){
+      <p class="error">Imagen obligatoria</p>
+      }@if(checkControl('image', 'pattern')){
+      <p class="error">El url debe ser válido</p>
+      }
     </div>
+
     <input
       class="btn btn-secondary"
       type="submit"

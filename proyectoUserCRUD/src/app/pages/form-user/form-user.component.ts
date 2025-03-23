@@ -37,12 +37,24 @@ export class FormUserComponent {
         _id: new FormControl(this.idUser || null, []),
         first_name: new FormControl(this.user?.first_name || null, [
           Validators.required,
+          Validators.minLength(3),
         ]),
         last_name: new FormControl(this.user?.last_name || null, [
           Validators.required,
+          Validators.minLength(3),
         ]),
-        email: new FormControl(this.user?.email || null, [Validators.required]),
-        image: new FormControl(this.user?.image || null, [Validators.required]),
+        email: new FormControl(this.user?.email || null, [
+          Validators.required,
+          Validators.pattern(
+            /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+          ),
+        ]),
+        image: new FormControl(this.user?.image || null, [
+          Validators.required,
+          Validators.pattern(
+            /^(https?:\/\/(?:.*\.pravatar\.cc\/.*|.*\.(?:png|jpg|jpeg|gif|webp|bmp|svg)(?:\?.*)?))$/
+          ),
+        ]),
       },
       []
     );
@@ -60,5 +72,11 @@ export class FormUserComponent {
       console.error('Error', error);
     }
     this.router.navigate(['/home']);
+  }
+  checkControl(controlName: string, errorName: string): boolean | undefined {
+    return (
+      this.userForm.get(controlName)?.hasError(errorName) &&
+      this.userForm.get(controlName)?.touched
+    );
   }
 }
