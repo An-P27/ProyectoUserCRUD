@@ -17,7 +17,16 @@ import { Router } from '@angular/router';
 })
 export class FormUserComponent {
   @Input() idUser: string = '';
-  userForm: FormGroup = new FormGroup({}, []);
+  userForm: FormGroup = new FormGroup(
+    {
+      _id: new FormControl(''),
+      first_name: new FormControl('', []),
+      last_name: new FormControl('', []),
+      email: new FormControl('', []),
+      image: new FormControl('', []),
+    },
+    []
+  );
   user!: IUser;
   userService = inject(UsersService);
   title: string = 'Registrar nuevo';
