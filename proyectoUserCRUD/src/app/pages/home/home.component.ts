@@ -46,7 +46,7 @@ export class HomeComponent {
           this.totalPages = response.total_pages;
         });
     } catch (error: any) {
-      console.log(error);
+      console.error('Error', error);
     }
   }
 

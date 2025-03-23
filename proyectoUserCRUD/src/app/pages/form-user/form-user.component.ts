@@ -7,7 +7,6 @@ import {
 } from '@angular/forms';
 import { IUser } from '../../interfaces/iuser.interface';
 import { UsersService } from '../../services/users.service';
-import { toast } from 'ngx-sonner';
 import { Router } from '@angular/router';
 
 @Component({
@@ -29,8 +28,8 @@ export class FormUserComponent {
       try {
         this.user = await this.userService.getById(this.idUser);
         this.title = 'Actualizar';
-      } catch (msg: any) {
-        toast.error(msg.error);
+      } catch (error: any) {
+        console.error('Error', error);
       }
     }
     this.userForm = new FormGroup(
@@ -57,8 +56,8 @@ export class FormUserComponent {
       } else {
         let response = this.userService.insert(this.userForm.value);
       }
-    } catch (msg: any) {
-      toast.error(msg.error);
+    } catch (error: any) {
+      console.error('Error', error);
     }
     this.router.navigate(['/home']);
   }
