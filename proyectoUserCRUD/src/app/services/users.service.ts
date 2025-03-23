@@ -24,4 +24,16 @@ export class UsersService {
       this.httpClient.delete<IUser>(`${this.baseUrl}/${id}`)
     );
   }
+
+  update(user: IUser): Promise<IUser> {
+    let { _id, ...userBody } = user;
+    return lastValueFrom(
+      this.httpClient.put<IUser>(`${this.baseUrl}/${_id}`, userBody)
+    );
+  }
+
+  insert(user: IUser): Promise<IUser> {
+    let { _id, ...userBody } = user;
+    return lastValueFrom(this.httpClient.post<IUser>(this.baseUrl, userBody));
+  }
 }

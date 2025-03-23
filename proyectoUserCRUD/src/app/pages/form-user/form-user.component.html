@@ -1,6 +1,7 @@
 <section class="container min-vh-100 py-5">
-  <h5 class="mt-5 mb-4 fw-semibold">Completa el siguiente formulario:</h5>
+  <h5 class="mt-5 mb-4 fw-semibold">{{ title }} usuario</h5>
   <form [formGroup]="userForm" (ngSubmit)="getDataForm()">
+    <input type="hidden" formControlName="_id" />
     <div class="mb-3">
       <label class="form-label" for="first_name">Nombre</label>
       <input
@@ -8,6 +9,7 @@
         type="text"
         id="first_name"
         formControlName="first_name"
+        placeholder="Introduce nombre"
       />
     </div>
     <div class="mb-3">
@@ -17,6 +19,7 @@
         type="text"
         id="last_name"
         formControlName="last_name"
+        placeholder="Introduce apellidos"
       />
     </div>
     <div class="mb-3">
@@ -26,6 +29,7 @@
         type="text"
         id="email"
         formControlName="email"
+        placeholder="Introduce email"
       />
     </div>
     <div class="mb-3">
@@ -35,12 +39,13 @@
         type="text"
         id="image"
         formControlName="image"
+        placeholder="Introduce una URL válida"
       />
     </div>
     <input
       class="btn btn-secondary"
       type="submit"
-      value="Enviar"
+      [value]="userForm.get('_id')?.value ? 'Actualizar' : 'Registrar'"
       [disabled]="userForm.invalid"
     />
   </form>
