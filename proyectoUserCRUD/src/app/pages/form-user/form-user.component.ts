@@ -8,6 +8,7 @@ import {
 import { IUser } from '../../interfaces/iuser.interface';
 import { UsersService } from '../../services/users.service';
 import { toast } from 'ngx-sonner';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-user',
@@ -21,6 +22,7 @@ export class FormUserComponent {
   user!: IUser;
   userService = inject(UsersService);
   title: string = 'Registrar nuevo';
+  router = inject(Router);
 
   async ngOnInit() {
     if (this.idUser) {
@@ -48,9 +50,16 @@ export class FormUserComponent {
   }
 
   getDataForm() {
-    if (this.userForm.value._id) {
-      let response = this.userService.update(this.userForm.value);
-    } else {
+    let response: IUser | any;
+    try {
+      if (this.userForm.value._id) {
+        let response = this.userService.update(this.userForm.value);
+      } else {
+        let response = this.userService.insert(this.userForm.value);
+      }
+    } catch (msg: any) {
+      toast.error(msg.error);
     }
+    this.router.navigate(['/home']);
   }
 }
